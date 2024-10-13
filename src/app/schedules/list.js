@@ -20,7 +20,8 @@ const ScheduleTable = ({ schedules }) => {
 
   const callUpdate = async (updatedSchedule) => {
       try {
-      const response = await fetch(`http://localhost:8000/scheduling/update/1`, {
+        
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scheduling/update/${updatedSchedule.schedule_id}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

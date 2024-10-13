@@ -11,7 +11,6 @@ const Modal = ({ schedule, onClose, onUpdate  }) => {
     const [userId, setUserId] = useState("");
 
     useEffect(() => {
-        console.log(schedule)
         if (schedule) {
           setScheduleId(schedule.schedule_id)
           setDateStart(new Date(schedule.date_start).toISOString().slice(0, 16));
