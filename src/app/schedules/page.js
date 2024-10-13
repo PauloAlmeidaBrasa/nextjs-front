@@ -3,6 +3,7 @@
 import React from 'react';
 
 import ScheduleTable from './list';
+import AddSchedule from "./add";
 
 async function fetchSchedules() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scheduling/list`, {
@@ -18,12 +19,18 @@ async function fetchSchedules() {
 }
 
 const SchedulesPage = async () => {
+
+
+
   const schedules = await fetchSchedules();
 
-  return (
+  return (  
     <div>
       <h1>Schedules</h1>
-       <ScheduleTable schedules={schedules} />
+        <ScheduleTable schedules={schedules} />
+        <div>
+        <AddSchedule />
+        </div>
     </div>
   );
 };
