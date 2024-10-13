@@ -73,31 +73,74 @@ const Modal = ({ schedule, onClose, onUpdate  }) => {
               onChange={(e) => setUserId(e.target.value)}
             />
           </label>
-        <button onClick={updateSchedule}>Atualizar</button>
-        <button onClick={onClose}>Close</button>
+        <div className="footer-btns-modal">
+          <button onClick={updateSchedule}>Atualizar</button>
+          <button onClick={onClose}>Close</button>
+        </div>
+
       </div>
       </div>
       <style jsx>{`
         .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000; /* Ensure modal is on top */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
-
         .modal-content {
-        background-color: white; /* White background for the modal */
-        padding: 20px;
-        border-radius: 8px; /* Rounded corners */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-        max-width: 400px; /* Limit max width */
-        width: 100%; /* Full width on smaller screens */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .modal-content h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .modal-content label {
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+            color: #555;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .modal-content button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .modal-content button:hover {
+            background-color: #0056b3;
+        }
+        .modal-content button:last-child {
+            background-color: #6c757d; /* Gray for close button */
+        }
+        .modal-content button:last-child:hover {
+            background-color: #5a6268;
+        }
+        .footer-btns-modal {
+          display: flex;
+          justify-content: space-around;
         }
       `}</style>
     </div>
