@@ -13,8 +13,8 @@ const Modal = ({ schedule, onClose, onUpdate  }) => {
     useEffect(() => {
         if (schedule) {
           setScheduleId(schedule.schedule_id)
-          setDateStart(new Date(schedule.date_start).toISOString().slice(0, 16));
-          setDateEnd(new Date(schedule.date_end).toISOString().slice(0, 16));
+          setDateStart(parseDateString(schedule.date_start).toISOString().slice(0, 16));
+          setDateEnd(parseDateString(schedule.date_end).toISOString().slice(0, 16));
           setAvailable(schedule.available);
           setUserId(schedule.user_id);
         }
@@ -36,6 +36,14 @@ const Modal = ({ schedule, onClose, onUpdate  }) => {
       };
 
     if (!schedule) return null;
+
+    function parseDateString(dateString) {
+      const [datePart, timePart] = dateString.split(' ');
+      const [day, month, year] = datePart.split('/').map(Number);
+      const [hours, minutes] = timePart.split(':').map(Number);
+      
+      return new Date(year, month - 1, day, hours, minutes);
+  }
 
   return (
     <div className="modal-overlay">
