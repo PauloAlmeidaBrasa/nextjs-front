@@ -4,7 +4,7 @@
 import React, { useState,useEffect  } from "react";
 
 const Modal = ({ schedule, onClose, onUpdate  }) => {
-  
+    const [scheduleId, setScheduleId] = useState("");
     const [dateStart, setDateStart] = useState("");
     const [dateEnd, setDateEnd] = useState("");
     const [available, setAvailable] = useState(true);
@@ -23,15 +23,15 @@ const Modal = ({ schedule, onClose, onUpdate  }) => {
         // Create an updated schedule object
         const updatedSchedule = {
           ...schedule,
+          schedule_id: scheduleId,
           date_start: dateStart,
           date_end: dateEnd,
           available: available,
           user_id: userId,
         };
         
-        // Call the update function passed from the ScheduleTable component
         onUpdate(updatedSchedule);
-        onClose(); // Close modal after updating
+        onClose();
       };
 
     if (!schedule) return null;

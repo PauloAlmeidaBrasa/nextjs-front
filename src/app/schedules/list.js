@@ -6,37 +6,37 @@ import Modal from "./modal";
 
 const ScheduleTable = ({ schedules }) => {
 
-    const [selectedSchedule, setSelectedSchedule] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSchedule, setSelectedSchedule] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = (schedule) => {
-        setSelectedSchedule(schedule); // Set the selected schedule
-        setIsModalOpen(true); // Open the modal
-    };
-    const closeModal = () => {
-        setIsModalOpen(false); // Close the modal
-        setSelectedSchedule(null); // Clear selected schedule
-    };
+  const openModal = (schedule) => {
+      setSelectedSchedule(schedule); // Set the selected schedule
+      setIsModalOpen(true); // Open the modal
+  };
+  const closeModal = () => {
+      setIsModalOpen(false); // Close the modal
+      setSelectedSchedule(null); // Clear selected schedule
+  };
 
-    const callUpdate = async (updatedSchedule) => {
-        try {
-          const response = await fetch(`http://localhost:8000/scheduling/${updatedSchedule.id}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedSchedule),
-          });
-    
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-    
-          closeModal();
-        } catch (error) {
+  const callUpdate = async (updatedSchedule) => {
+      try {
+      const response = await fetch(`http://localhost:8000/scheduling/update/1`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedSchedule),
+      });
+
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+
+      closeModal();
+      } catch (error) {
           console.error("Error updating schedule:", error);
-        }
-    };
+      }
+  };
 
   return (
     <div className="container">
@@ -54,7 +54,7 @@ const ScheduleTable = ({ schedules }) => {
         <tbody>
           {schedules.length > 0 ? (
             schedules.map((schedule) => (
-              <tr key={schedule.id}>
+              <tr key={schedule.schedule_id}>
                 <td>{schedule.date_start}</td>
                 <td>{schedule.date_end}</td>
                 <td>{schedule.available ? 'Yes' : 'No'}</td>

@@ -5,7 +5,7 @@ import React from 'react';
 import ScheduleTable from './list';
 
 async function fetchSchedules() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scheduling`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scheduling/list`, {
     next: { revalidate: 10 }, // Revalidate every 10 seconds
   });
 
