@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import Modal from "./modal";
 
-const ScheduleTable = ({ schedules }) => {
+const ScheduleTable = ({ schedules, onDeleteSchedule }) => {
 
   const [selectedSchedule, setSelectedSchedule] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,7 +61,10 @@ const ScheduleTable = ({ schedules }) => {
                 <td>{schedule.available ? 'Yes' : 'No'}</td>
                 <td>{schedule.user_id}</td>
                 <td>
-                  <button onClick={() => openModal(schedule)}>Edit Schedule</button>
+                  <div style={{ display: 'flex',justifyContent: 'space-between'}}>
+                    <button onClick={() => openModal(schedule)}>Edit Schedule</button>
+                    <button onClick={() => onDeleteSchedule(schedule.id)}>Delete</button>
+                  </div>
                 </td>
               </tr>
             ))

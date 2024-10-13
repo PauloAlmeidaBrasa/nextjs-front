@@ -1,5 +1,5 @@
 // app/schedules/page.js
-
+'use client';
 import React from 'react';
 
 import ScheduleTable from './list';
@@ -18,9 +18,16 @@ async function fetchSchedules() {
   return  result.data;
 }
 
+const handleDeleteSchedule = async (id) => {
+  // Send a DELETE request to your backend
+  await fetch(`${process.env.NEXT_PUBLIC_API_URL}/scheduling/delete/${id}`, {
+      method: 'DELETE',
+  });
+  // After deleting, refresh the schedule list
+  fetchSchedules();
+};
+
 const SchedulesPage = async () => {
-
-
 
   const schedules = await fetchSchedules();
 
@@ -28,7 +35,7 @@ const SchedulesPage = async () => {
     <div>
       <h1>Schedules</h1>
         <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <ScheduleTable schedules={schedules} />
+        <ScheduleTable schedules={schedules}  onDeleteSchedule={handleDeleteSchedule} />
         <AddScheduleToggle />
         </div>
     </div>

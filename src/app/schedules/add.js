@@ -31,7 +31,6 @@ const  AddSchedule = () => {
       });
 
       if (res.ok) {
-        // Redirect to schedule listing after a successful submission
         router.push("/schedules");
       } else {
         console.error("Failed to add schedule");
