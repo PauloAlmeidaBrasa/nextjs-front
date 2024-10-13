@@ -18,16 +18,37 @@ const ScheduleTable = ({ schedules }) => {
         setSelectedSchedule(null); // Clear selected schedule
     };
 
+    const callUpdate = async (updatedSchedule) => {
+        try {
+          const response = await fetch(`http://localhost:8000/scheduling/${updatedSchedule.id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedSchedule),
+          });
+    
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+    
+          closeModal();
+        } catch (error) {
+          console.error("Error updating schedule:", error);
+        }
+    };
+
   return (
     <div className="container">
       <h1>Schedule List</h1>
       <table className="schedule-table">
         <thead>
-          <tr>
-            <th>Date Start</th>
-            <th>Date End</th>
-            <th>Available</th>
-            <th>User ID</th>
+          <tr className="tr-style">
+            <th>Data início</th>
+            <th>Data Fim</th>
+            <th>Disponível</th>
+            <th>Usuário</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -50,8 +71,13 @@ const ScheduleTable = ({ schedules }) => {
           )}
         </tbody>
       </table>
-       {/* Render the Modal */}
-       {isModalOpen && <Modal schedule={selectedSchedule} onClose={closeModal} />}
+        {isModalOpen && (
+        <Modal 
+            schedule={selectedSchedule} 
+            onClose={closeModal} 
+            onUpdate={callUpdate} 
+        />)}
+
       <style jsx>{`
         .container {
         display: flex;
@@ -85,6 +111,9 @@ const ScheduleTable = ({ schedules }) => {
         h1 {
         text-align: center;        
         margin-bottom: 20px;      
+        }
+        .tr-style {
+         color: black;
         }
 
       `}</style>

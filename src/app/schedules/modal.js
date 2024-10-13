@@ -3,7 +3,7 @@
 
 import React, { useState,useEffect  } from "react";
 
-const Modal = ({ schedule, onClose }) => {
+const Modal = ({ schedule, onClose, onUpdate  }) => {
   
     const [dateStart, setDateStart] = useState("");
     const [dateEnd, setDateEnd] = useState("");
@@ -19,7 +19,7 @@ const Modal = ({ schedule, onClose }) => {
         }
     }, [schedule]);
 
-    const handleUpdate = () => {
+    const updateSchedule = () => {
         // Create an updated schedule object
         const updatedSchedule = {
           ...schedule,
@@ -40,9 +40,9 @@ const Modal = ({ schedule, onClose }) => {
     <div className="modal-overlay">
       <div className="modal-overlay">
         <div className="modal-content">
-          <h2>Update Schedule</h2>
+          <h2>Editar agendamento</h2>
           <label>
-            Date Start:
+            Data início:
             <input
               type="datetime-local"
               value={dateStart}
@@ -50,7 +50,7 @@ const Modal = ({ schedule, onClose }) => {
             />
           </label>
           <label>
-            Date End:
+            Data fim:
             <input
               type="datetime-local"
               value={dateEnd}
@@ -58,7 +58,7 @@ const Modal = ({ schedule, onClose }) => {
             />
           </label>
           <label>
-            Available:
+            Dsiponível:
             <input
               type="checkbox"
               checked={available}
@@ -66,14 +66,14 @@ const Modal = ({ schedule, onClose }) => {
             />
           </label>
           <label>
-            User ID:
+            Ident Usuario:
             <input
               type="number"
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
             />
           </label>
-        <button onClick={handleUpdate}>Update</button>
+        <button onClick={updateSchedule}>Atualizar</button>
         <button onClick={onClose}>Close</button>
       </div>
       </div>
