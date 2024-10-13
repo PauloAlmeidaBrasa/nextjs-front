@@ -12,12 +12,10 @@ export default function AddScheduleToggle() {
 
   return (
     <div>
-      {/* Button to toggle form visibility */}
       <button onClick={toggleForm}>
         {showAddForm ? 'Fechar' : 'Add Agendamento' }
       </button>
 
-      {/* Conditionally render the form */}
       {showAddForm && <AddSchedule />}
     </div>
   );

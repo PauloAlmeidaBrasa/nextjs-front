@@ -1,4 +1,4 @@
-// app/components/Modal.js
+
 "use client";
 
 import React, { useState,useEffect  } from "react";

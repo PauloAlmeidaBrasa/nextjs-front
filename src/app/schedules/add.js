@@ -1,19 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // useRouter for navigation after form submission
+import { useRouter } from "next/navigation";
 
 const  AddSchedule = () => {
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
   const [available, setAvailable] = useState(true);
   const [userId, setUserId] = useState("");
-  const router = useRouter(); // use for redirecting after successful submission
+  const router = useRouter(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prepare the payload to send to the Symfony API
+
     const newSchedule = {
       date_start: dateStart,
       date_end: dateEnd,

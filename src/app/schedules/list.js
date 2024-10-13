@@ -10,12 +10,12 @@ const ScheduleTable = ({ schedules, onDeleteSchedule }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = (schedule) => {
-      setSelectedSchedule(schedule); // Set the selected schedule
-      setIsModalOpen(true); // Open the modal
+      setSelectedSchedule(schedule);
+      setIsModalOpen(true);
   };
   const closeModal = () => {
-      setIsModalOpen(false); // Close the modal
-      setSelectedSchedule(null); // Clear selected schedule
+      setIsModalOpen(false);
+      setSelectedSchedule(null);
   };
 
   const callUpdate = async (updatedSchedule) => {
@@ -63,7 +63,7 @@ const ScheduleTable = ({ schedules, onDeleteSchedule }) => {
                 <td>
                   <div style={{ display: 'flex',justifyContent: 'space-between'}}>
                     <button onClick={() => openModal(schedule)}>Edit Schedule</button>
-                    <button onClick={() => onDeleteSchedule(schedule.id)}>Delete</button>
+                    <button onClick={() => onDeleteSchedule(schedule.schedule_id)}>Delete</button>
                   </div>
                 </td>
               </tr>
