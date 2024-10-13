@@ -55,7 +55,7 @@ const ScheduleTable = ({ schedules }) => {
         <tbody>
           {schedules.length > 0 ? (
             schedules.map((schedule) => (
-              <tr key={schedule.schedule_id}>
+              <tr key={schedule.schedule_id} style={{ backgroundColor: 'black', color: 'white' }}>
                 <td>{schedule.date_start}</td>
                 <td>{schedule.date_end}</td>
                 <td>{schedule.available ? 'Yes' : 'No'}</td>

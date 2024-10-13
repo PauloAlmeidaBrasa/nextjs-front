@@ -76,7 +76,7 @@ const  AddSchedule = () => {
           required
         />
 
-        <button type="submit" style={{ marginTop: "10px" }}>Add Schedule</button>
+        <button type="submit" style={{ marginTop: "10px" }}>Adicionar Agendamento</button>
       </form>
       <style jsx>
         {
